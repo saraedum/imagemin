@@ -70,5 +70,5 @@ module.exports.buffer = (input, opts) => {
 		return Promise.resolve(input);
 	}
 
-	return pPipe(opts.plugins)(input).then(buf => (buf.length < input.length ? buf : input));
+	return pPipe(opts.plugins)(input).then(buf => ((buf.length < input.length || opts.force) ? buf : input));
 };
